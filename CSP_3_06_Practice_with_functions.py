@@ -1,44 +1,75 @@
 #Herons Formula
 import math
 
+
 #returns the square root of the number n
 def root(n):
-    return math.sqrt(n)
+   return math.sqrt(n)
+
 
 #Takes in the 3 side lengths of a triangle as arguments and returns half of
 #the perimeter of a triangle.
-def semiPerimeter():
-    pass
+def semiPerimeter(a,b,c):
+   return (a+b+c)/2
+semiPerimeter(1,2,3)
+
 
 #Modify the below function such that it takes in 4 arguments. multiply the first
 #argument by the difference between itself and each individual argument. Reference herons formula for more context.
-def multiplyDifferences():
-    pass
+def multiplyDifferences(s, a, b, c):
+   return s * (s - a) * (s - b) * (s - c)
 
+
+multiplyDifferences(1,2,3,4)
 #Given the 3 sides of a triangle return the area.
 #use herons formula
 #Use the functions above.
-def herons():
-    pass
+
+
+def herons(a, b, c):
+   s = semiPerimeter(a, b, c)
+   area = math.sqrt(multiplyDifferences(s, a, b, c))
+   return area
+
+
+herons(1,3,4)
 
 
 #quadratic equation
 
-#takes in a number as an argument and returns that number multiplied by 2.
-def denominator():
-    pass
 
+#takes in a number as an argument and returns that number multiplied by 2.
+def denominator(x):
+   return x * 2
+
+
+denominator(2)
 #Takes in two arguments. multiply the first argument by negative 1. Then
 #return the modified first argument added and subtracted by the second argument.
-def plusMinus():
-    pass
+def plusMinus(a, b):
+   a = a * -1
+   return a + b, a - b
+plusMinus(1,2)
+
+
 #takes in three numbers as arguments. The first and third multiplied together then
 #multiplied by 4.Then subtract that result from the second argument squared.
 #Return the overall result.
-def mainCalc():
-    pass
+def mainCalc(a, b, c):
+   return b**2 - 4 * a * c
+mainCalc(1, 2, 3)
+
+
+
 
 #The below function should take the inputs of the quadratic equation and return the result
 #Make sure to use all the formulas from this section.
-def quadratic():
-    pass
+
+
+def quadratic(a, b, c):
+   discriminant = mainCalc(a, b, c)
+   sqrt_disc = math.sqrt(discriminant)  # works for negative numbers
+   neg_b = plusMinus(b, sqrt_disc)       # returns (-b plus minus sqrt_disc)
+   root1 = neg_b[0] / denominator(a)
+   root2 = neg_b[1] / denominator(a)
+   return root1, root2
